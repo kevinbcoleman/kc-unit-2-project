@@ -12,13 +12,13 @@ const albumSchema = new mongoose.Schema({
   },
   genre: {
     type: String,
-    enum: ['rock', 'pop', 'hip-hop', 'electronic', 'alternative']
+    enum: ['rock', 'pop', 'hip-hop', 'r&b', 'alternative']
   },
   description: {
     type: String,
     required: true
   },
-  releaseDate: Number
+  releaseYear: Number
 })
 
 const Album = mongoose.model('Album', albumSchema)

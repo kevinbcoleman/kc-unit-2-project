@@ -1,6 +1,6 @@
-//___________________
-//Dependencies
-//___________________
+//==========================================
+//              DEPENDENCIES
+//==========================================
 const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
@@ -26,9 +26,12 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
-//___________________
-//Middleware
-//___________________
+
+
+
+//==========================================
+//              MIDDLEWARE
+//==========================================
 //use public folder for static assets
 app.use(express.static('public'));
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
@@ -37,25 +40,18 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
-
-
-//Controllers
+//==========================================
+//              CONTROLLERS
+//==========================================
 const albumsController = require('./controllers/albums.js')
 app.use('/albums', albumsController)
 
-
-
-
-
-
-//___________________
-// Routes
-//___________________
-//localhost:3000
+//==========================================
+//              INDEX ROUTE
+//==========================================
 app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-//___________________
-//Listener
-//___________________
+  res.redirect('/albums')
+})
+
+//LISTENER
 app.listen(PORT, () => console.log('Listening on port:', PORT));

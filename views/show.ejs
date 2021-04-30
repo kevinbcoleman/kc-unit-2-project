@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Album Details</h1>
+  <div>
+    <div>
+      <img src=" <%=album.image%> " alt="">
+    </div>
+    <h2>
+      <%=album.name%>
+    </h2>
+    <h3>
+      <%=album.artist%>
+    </h3>
+    <p>
+      <%=album.description%>
+    </p>
+    <p>
+      <%=album.genre%>
+    </p>
+    <p>
+      <%=album.releaseYear%>
+    </p>
+  </div>
+  <button type="button" name="button">
+    <a href="/">Back</a>
+  </button>
+
+</body>
+
+</html>

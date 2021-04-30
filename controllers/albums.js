@@ -1,27 +1,59 @@
 const express = require('express')
-const router = express.Router()
+const albums = express.Router()
 const Album = require('../models/albums.js')
 const albumSeed = require('../models/seed.js')
 
 
 
+//==========================================
+//              ALBUMS ROUTES
+//==========================================
 
+/*============
+    SHOW
+ ============*/
+
+albums.get('/:id', (req, res) => {
+  Album.findById(req.params.id, (err, foundAlbum) => {
+    res.render('show.ejs',
+      {
+        album: foundAlbum
+      })
+  })
+})
+
+
+
+
+
+
+
+/*============
+    INDEX
+ ============*/
+albums.get('/', (req, res) => {
+  Album.find({}, (err, allAlbums) => {
+    res.render('index.ejs',
+      {
+        albums: allAlbums
+      })
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+//==========================================
+//               SEED DATA
+//==========================================
 // Album.insertMany(albumSeed)
 
+module.exports = albums
 
-
-
-
-// router.get('/seed', (req, res) => {
-//   // drop database - prevents from seeding the same data over and over. But remember, it will drop all new changes to your database!
-//   Album.deleteMany({}, () => { });
-//   // this is the code to actually seed the database
-//   Album.create(albumSeed, (error, data) => {
-//     // you can also change the second part to res.status(200).redirect('/products') or wherever you want to go.
-//     error ? res.status(400).json(error) : res.status(200).json(data);
-//   });
-// })
-
-module.exports = router
-
-console.log()
