@@ -15,9 +15,10 @@ const albumSeed = require('../models/seed.js')
 
 albums.get('/:id', (req, res) => {
   Album.findById(req.params.id, (err, foundAlbum) => {
-    res.render('show.ejs',
+    res.render('albums/show.ejs',
       {
-        album: foundAlbum
+        album: foundAlbum,
+        currentUser: req.session.currentUser
       })
   })
 })
@@ -33,9 +34,10 @@ albums.get('/:id', (req, res) => {
  ============*/
 albums.get('/', (req, res) => {
   Album.find({}, (err, allAlbums) => {
-    res.render('index.ejs',
+    res.render('albums/index.ejs',
       {
-        albums: allAlbums
+        albums: allAlbums,
+        currentUser: req.session.currentUser
       })
   })
 })
