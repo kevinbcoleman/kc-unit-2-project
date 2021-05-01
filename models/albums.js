@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const albumSchema = new mongoose.Schema({
+const albumSchema = new Schema({
   image: String,
   name: {
     type: String,
@@ -17,8 +18,7 @@ const albumSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true
-  },
-  releaseYear: Number
+  }
 })
 
 const Album = mongoose.model('Album', albumSchema)

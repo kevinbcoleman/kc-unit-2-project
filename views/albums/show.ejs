@@ -26,16 +26,26 @@
     <p>
       <%=album.genre%>
     </p>
-    <p>
-      <%=album.releaseYear%>
-    </p>
   </div>
-  <button type="button" name="button">
+  <button type="button">
     <a href="/">Back</a>
   </button>
-  <button type="button" name="button">
-    <a href="/">Add to Collection</a>
+  <button type="button">
+    <a href="/albums/<%=album.id%>/edit">Edit Album</a>
   </button>
+  <form action="/albums/<%=album.id%>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete">
+  </form>
+
+  <!-- <form action="../users/collection" method="POST">
+    <label for="alb"></label>
+    <input type="text" name="alb" id="" value="<%#album%> ">
+    <input type="submit" name="Add to Collection" value="Add to Collection" id="">
+  </form> -->
+
+  <!-- <button type="button" name="button">
+    <a href="../albums/add">Add to Collection</a>
+  </button> -->
 
 </body>
 

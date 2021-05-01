@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- 
+  NEW USER FORM
+ -->
+
+<body>
+  <h1>Add New</h1>
+  <form action="/albums" method="POST">
+    <label for="image">Image: </label>
+    <input type="text" name="image">
+
+    <label for="name">Album Name </label>
+    <input type="text" name="name">
+
+    <label for="artist">Artist </label>
+    <input type="text" name="artist">
+
+    <label for="description">Description </label>
+    <input type="text" name="description">
+
+    <!-- SELECT GENRE -->
+    <label for="genre">Select Genre</label>
+    <select name="genre" id="">
+      <option value="alternative">Alternative</option>
+      <option value="pop">Pop</option>
+      <option value="hip-hop">Hip-Hop</option>
+      <option value="rock">Rock</option>
+      <option value="r&b">R&B</option>
+    </select>
+    <input type="Submit" value="Submit">
+  </form>
+</body>
+
+</html>
