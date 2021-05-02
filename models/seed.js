@@ -13,7 +13,7 @@ module.exports = [
     artist: 'James Blake',
     genre: 'alternative',
     description: 'Assume Form has been described as a pop and electropop with elements of hip hop and R&B, and as significantly more upbeat than his previous records, numerous publications contrasting it with the "utterly downcast" The Colour In Anything.',
-    comments: []
+    comments: [Object]
   },
   {
     image: 'https://upload.wikimedia.org/wikipedia/en/6/66/22%2C_A_Million_cover.jpg',

@@ -2,7 +2,7 @@ const express = require('express')
 const albums = express.Router()
 const Album = require('../models/albums.js')
 const albumSeed = require('../models/seed.js')
-const Comment = require('../models/comments')
+const Comment = require('../models/comments.js')
 
 
 //==========================================
@@ -22,12 +22,13 @@ albums.get('/new', (req, res) => {
  ============*/
 
 albums.post('/:id/comments', (req, res) => {
-  const comment = new Comment(req.body)
-  comment.save()
   Album.findById(
     req.params.id,
     (err, foundAlbum) => {
-      foundAlbum.comments.push(comment)
+      const albumComment = new Comment(req.body)
+      albumComment.save()
+      foundAlbum.comments.push(albumComment)
+      console.log(foundAlbum)
       foundAlbum.save()
       res.redirect(`/albums/${req.params.id}`)
     })
@@ -56,8 +57,7 @@ albums.post('/:id/comments', (req, res) => {
     CREATE --Add new album
  ============*/
 albums.post('/', (req, res) => {
-  Album.create(req.body, (_err, _createdAlbum) => {
-    console.log(req.body)
+  Album.create(req.body, (err, createdAlbum) => {
     res.redirect('/')
   })
 })
@@ -65,7 +65,7 @@ albums.post('/', (req, res) => {
      EDIT
  ============*/
 albums.get('/:id/edit', (req, res) => {
-  Album.findById(req.params.id, (_err, foundAlbum) => {
+  Album.findById(req.params.id, (err, foundAlbum) => {
     res.render('albums/edit.ejs',
       {
         album: foundAlbum,
@@ -81,9 +81,7 @@ albums.put('/:id', (req, res) => {
     req.params.id,
     req.body,
     { new: true },
-    (_err, _updatedAlbum) => {
-      // console.log(req.params.id)
-      // console.log(req.body)
+    (err, updatedAlbum) => {
       res.redirect('/')
     }
   )
@@ -92,8 +90,7 @@ albums.put('/:id', (req, res) => {
     DELETE
  ============*/
 albums.delete('/:id', (req, res) => {
-  Album.findByIdAndRemove(req.params.id, (_err, _deletedAlbum) => {
-    console.log('hi')
+  Album.findByIdAndRemove(req.params.id, (err, deletedAlbum) => {
     res.redirect('/')
   })
 })
@@ -103,6 +100,7 @@ albums.delete('/:id', (req, res) => {
  ============*/
 albums.get('/:id', (req, res) => {
   Album.findById(req.params.id, (err, foundAlbum) => {
+    foundAlbum.populate('comments')
     res.render('albums/show.ejs',
       {
         album: foundAlbum,
@@ -116,7 +114,7 @@ albums.get('/:id', (req, res) => {
     INDEX
  ============*/
 albums.get('/', (req, res) => {
-  Album.find({}, (_err, allAlbums) => {
+  Album.find({}, (err, allAlbums) => {
     res.render('albums/index.ejs',
       {
         albums: allAlbums,
