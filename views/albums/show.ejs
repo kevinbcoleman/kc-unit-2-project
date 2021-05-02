@@ -36,6 +36,26 @@
   <form action="/albums/<%=album.id%>?_method=DELETE" method="POST">
     <input type="submit" value="Delete">
   </form>
+  <form action="/albums/<%=album.id%>/comments" method="POST">
+    <label for="comment">Share your thoughts!</label>
+    <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+    <button>Share</button>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- <form action="../users/collection" method="POST">
     <label for="alb"></label>

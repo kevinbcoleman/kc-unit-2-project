@@ -18,7 +18,13 @@ const albumSchema = new Schema({
   description: {
     type: String,
     required: true
-  }
+  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ]
 })
 
 const Album = mongoose.model('Album', albumSchema)
