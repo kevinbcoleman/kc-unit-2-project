@@ -37,16 +37,6 @@ albums.post('/:id/comments', (req, res) => {
     })
 })
 
-
-// albums.post('/:id/comments', async (req, res) => {
-//   const album = await Album.findById(req.params.id)
-//   const comment = new Comment(req.body.comment)
-//   album.comments.unshift(comment)
-//   comment.save()
-//   album.save()
-//   res.redirect(`/albums/${req.params.id}`)
-// })
-
 /*============
     CREATE --Add new album
  ============*/
@@ -94,12 +84,7 @@ albums.delete('/:id', (req, res) => {
  ============*/
 albums.get('/:id', (req, res) => {
   Album.findById(req.params.id, (err, foundAlbum) => {
-    foundAlbum.populate({
-      path: 'comments',
-      populate: {
-        path: 'author'
-      }
-    })
+    foundAlbum.populate('comments')
     res.render('albums/show.ejs',
       {
         album: foundAlbum,
