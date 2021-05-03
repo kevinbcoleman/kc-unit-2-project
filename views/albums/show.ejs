@@ -40,8 +40,10 @@
     <label for="comment">Share your thoughts!</label>
     <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
     <button>Share</button>
-    <% for (let comment of album.comments) { %>
-      <p>Comment: <%=comment%>
+    <% for (let i=0; i < album.comments.length; i++) { %>
+      <p>Comment: <%=album.comments[i].author%>
+      </p>
+      <p>Comment: <%=album.comments[i].comment%>
       </p>
       <% } %>
 

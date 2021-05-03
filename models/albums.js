@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Comment = require('./comments')
 const Schema = mongoose.Schema
 
 const albumSchema = new Schema({
@@ -19,12 +20,11 @@ const albumSchema = new Schema({
     type: String,
     required: true
   },
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }
-  ]
+  // author: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User'
+  // },
+  comments: [Object]
 })
 
 const Album = mongoose.model('Album', albumSchema)
