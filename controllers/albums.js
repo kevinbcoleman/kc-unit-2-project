@@ -26,12 +26,12 @@ albums.post('/:id/comments', (req, res) => {
     req.params.id,
     (err, foundAlbum) => {
       const albumComment = new Comment(req.body)
-      albumComment.author = req.session.currentUser
+      albumComment.author = req.session.currentUser.username
       albumComment.save()
       foundAlbum.comments.push(albumComment)
       console.log(req.session.currentUser)
-      console.log(req.body)
       console.log(albumComment)
+      console.log(req.session.currentUser.username)
       foundAlbum.save()
       res.redirect(`/albums/${req.params.id}`)
     })
