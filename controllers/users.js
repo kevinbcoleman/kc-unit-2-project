@@ -12,6 +12,7 @@ users.get('/new', (req, res) => {
     })
 })
 
+users.post('/collection')
 
 
 users.post('/', (req, res) => {
@@ -22,9 +23,10 @@ users.post('/', (req, res) => {
 })
 
 
-// users.get('../collection', (req, res) => {
+// users.get('/:id/collection', (req, res) => {
 //   Album.findById(req.params.id, (err, album) => {
-//     res.render('users/collection.ejs', {
+//     console.log(usr)
+//     res.render(`users/collection.ejs`, {
 //       currentUser: req.session.currentUser
 //     })
 //   })

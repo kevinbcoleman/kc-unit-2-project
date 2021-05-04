@@ -17,6 +17,8 @@ albums.get('/new', (req, res) => {
       currentUser: req.session.currentUser
     })
 })
+
+
 /*============
     COMMENT --Comment on album show page
  ============*/
@@ -29,9 +31,6 @@ albums.post('/:id/comments', (req, res) => {
       albumComment.author = req.session.currentUser.username
       albumComment.save()
       foundAlbum.comments.push(albumComment)
-      console.log(req.session.currentUser)
-      console.log(albumComment)
-      console.log(req.session.currentUser.username)
       foundAlbum.save()
       res.redirect(`/albums/${req.params.id}`)
     })
@@ -48,6 +47,7 @@ albums.post('/', (req, res) => {
 /*============
      EDIT
  ============*/
+
 albums.get('/:id/edit', (req, res) => {
   Album.findById(req.params.id, (err, foundAlbum) => {
     res.render('albums/edit.ejs',
@@ -79,9 +79,11 @@ albums.delete('/:id', (req, res) => {
   })
 })
 
+
 /*============
      SHOW
  ============*/
+
 albums.get('/:id', (req, res) => {
   Album.findById(req.params.id, (err, foundAlbum) => {
     foundAlbum.populate('comments')
@@ -106,6 +108,7 @@ albums.get('/', (req, res) => {
       })
   })
 })
+
 
 
 //==========================================

@@ -1,81 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" "content-security-policy" content="default-src 'none'; script-src 'self';
-    connect-src 'self'; img-src 'self';
-    style-src 'self' 'sha256-CwE3Bg0VYQOIdNAkbB/Btdkhul49qZuwgNCMPgNY5zw=';">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+<%- include ('../partials/head.ejs') %>
 
-<body>
-  <h1>Album Details</h1>
-  <div>
-    <div>
-      <img src=" <%=album.image%> " alt="">
+  <body>
+
+    <div class="container mb-5">
+
+      <%- include ('../partials/header.ejs') %>
+
+        <div class="card p-5">
+          <div>
+            <div class="d-flex justify-content-center">
+              <img src=" <%=album.image%> " alt="">
+            </div>
+            <h2 class="mt-4">
+              <%=album.name%>
+            </h2>
+            <h3>
+              <%=album.artist%>
+            </h3>
+            <p>
+              <%=album.description%>
+            </p>
+            <p class="text-muted">Genre:
+              <%=album.genre%>
+            </p>
+          </div>
+          <div class="card-body">
+            <a class="card-link btn btn-light" href="/">Back</a>
+            <a class="card-link btn btn-light" href="/albums/<%=album.id%>/edit">Edit Album</a>
+          </div>
+          <div class="card-footer">
+            <form class="d-flex justify-content-end" action="/albums/<%=album.id%>?_method=DELETE" method="POST">
+              <input class=" btn btn-danger" type="submit" value="Delete">
+            </form>
+          </div>
+        </div>
+
+
+        <form action="/albums/<%=album.id%>/comments" method="POST">
+          <div class="form-group">
+            <textarea class="form-control mt-5" name="comment" id="comment" placeholder="What do you think?" cols="30"
+              rows="4"></textarea>
+            <button class="align-self-end btn btn-dark">Share</button>
+          </div>
+
+          <p class="mt-5">Comments: </p>
+          <% for (let i=0; i < album.comments.length; i++) { %>
+            <div class="card mt-2">
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>
+                    "<%=album.comments[i].comment%>"
+                  </p>
+                  <footer class="blockquote-footer">
+                    <%=album.comments[i].author%>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+            <% } %>
+        </form>
+
     </div>
-    <h2>
-      <%=album.name%>
-    </h2>
-    <h3>
-      <%=album.artist%>
-    </h3>
-    <p>
-      <%=album.description%>
-    </p>
-    <p>
-      <%=album.genre%>
-    </p>
-  </div>
-  <button type="button">
-    <a href="/">Back</a>
-  </button>
-  <button type="button">
-    <a href="/albums/<%=album.id%>/edit">Edit Album</a>
-  </button>
-  <form action="/albums/<%=album.id%>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete">
-  </form>
-  <form action="/albums/<%=album.id%>/comments" method="POST">
-    <label for="comment">Share your thoughts!</label>
-    <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
-    <button>Share</button>
-    <% for (let i=0; i < album.comments.length; i++) { %>
-      <p>Comment: <%=album.comments[i].author%>
-      </p>
-      <p>Comment: <%=album.comments[i].comment%>
-      </p>
-      <% } %>
 
-  </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <form action="../users/collection" method="POST">
-    <label for="alb"></label>
-    <input type="text" name="alb" id="" value="<%#album%> ">
-    <input type="submit" name="Add to Collection" value="Add to Collection" id="">
-  </form> -->
-
-  <!-- <button type="button" name="button">
-    <a href="../albums/add">Add to Collection</a>
-  </button> -->
-
-</body>
+  </body>
 
 </html>
