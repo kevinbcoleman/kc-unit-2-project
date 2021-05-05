@@ -17,8 +17,7 @@ albums.get('/new', (req, res) => {
       currentUser: req.session.currentUser
     })
 })
-
-
+##
 /*============
     COMMENT --Comment on album show page
  ============*/
@@ -95,7 +94,6 @@ albums.get('/:id', (req, res) => {
   })
 })
 
-
 /*============
     INDEX
  ============*/
@@ -108,8 +106,6 @@ albums.get('/', (req, res) => {
       })
   })
 })
-
-
 
 //==========================================
 //               SEED DATA
