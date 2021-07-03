@@ -17,7 +17,7 @@ albums.get('/new', (req, res) => {
       currentUser: req.session.currentUser
     })
 })
-##
+
 /*============
     COMMENT --Comment on album show page
  ============*/
