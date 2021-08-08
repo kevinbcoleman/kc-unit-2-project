@@ -4,15 +4,17 @@
 const express = require('express')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const app = express()
+const db = mongoose.connection
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 const session = require('cookie-session')
 
 
 //==========================================
 //              CONFIGURATION
 //==========================================
-require('dotenv').config()
-const app = express()
-const db = mongoose.connection
+
 const PORT = process.env.PORT || 3003;
 const MONGODB_URI = process.env.MONGODB_URI
 
