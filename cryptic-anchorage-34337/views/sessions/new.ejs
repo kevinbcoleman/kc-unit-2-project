@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('../partials/head.ejs') %>
+
+
+  <body>
+    <div class="container">
+      <%- include ('../partials/header.ejs') %>
+
+        <h1>Log In</h1>
+        <form class="form-group" action="/sessions" method="POST">
+          <label for="name">User Name:</label>
+          <input class="form-control" type="text" name="username" required />
+          <label for="color">Password:</label>
+          <input class="form-control" type="password" name="password" />
+          <br>
+          <input class="btn btn-primary" type="submit" value="Submit">
+          <form>
+    </div>
+  </body>
+
+</html>
