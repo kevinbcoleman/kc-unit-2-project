@@ -8,7 +8,7 @@ const app = express()
 const db = mongoose.connection
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') });
-const session = require('cookie-session')
+const session = require('express-session')
 
 
 //==========================================
