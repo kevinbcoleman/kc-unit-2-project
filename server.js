@@ -4,7 +4,7 @@
 const express = require('express')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-const session = require('express-session')
+const session = require('cookie-session')
 
 
 //==========================================
