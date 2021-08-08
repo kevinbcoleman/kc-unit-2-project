@@ -40,7 +40,7 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 app.use(
   session({
-    secret: process.env.MONGODB_URI,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
   })
