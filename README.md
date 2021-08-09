@@ -1,5 +1,5 @@
-# kc-unit-2-project
+# Sound Pool
 Music disovery app built with HTML, JavaScript, Express, and Bootstrap. 
-It is a full CRUD app with data being stored via MongoDB. 
-Users are able to view, edit, add, and delete albums based on whether they
-are logged in or not. Users can also sign up and comment on albums.
+Sound Pool is a full CRUD app with data being stored via MongoDB. 
+It features authentication that allows users to create a profile that stores data.
+Users are able to view, edit, add, and delete albums as well as comment on posts from other users. 
