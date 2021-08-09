@@ -16,12 +16,12 @@ const session = require('express-session')
 //==========================================
 
 const PORT = process.env.PORT || 3003;
-const MONGODB_URI = process.env.MONGODB_URI
+const mongoURI = process.env.MONGODB_URI
 
 /*============
     DATABASE
  ============*/
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -29,7 +29,7 @@ mongoose.connect(MONGODB_URI, {
 })
 
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+db.on('connected', () => console.log('mongo connected: ', mongoURI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 
